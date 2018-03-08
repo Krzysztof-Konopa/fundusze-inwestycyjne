@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="InvestmentManager">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Investment Portal</title>
+
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="templates/investment.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="container" ng-controller="InvestmentController">
+    <div class="page-header">
+        <h1 class="head">Investment Fund Portal</h1>
+    </div>
+
+        <h2>Setup investment</h2><br />
+        <br />
+
+        Cash: <input type="text" name="cash" ng-model="cash"><br />
+        <br />
+
+        Investment strategy: <select ng-model="currentStrategy"><option ng-repeat="strategy in strategyList">{{strategy}}</option></select><br />
+        <br />
+
+        Funds:<br />
+        <div class="table-responsive">
+            <table class="table table-striped">
+                    <tr>
+                        <th></th>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th></th>
+                    </tr>
+                <tr ng-repeat="item in funds">
+                    <td>{{item.id}} </td>
+                    <td>
+                        <select ng-model="item.type" class="form-control match-content">
+                            <option selected="">Polish</option>
+                            <option>Foreign</option>
+                            <option>Cash</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" ng-model="item.name">
+                    </td>
+                    <td ng-if="!$first"><button ng-click="funds.splice($index, 1)">-</button></td>
+                </tr>
+            </table>
+        </div>
+
+        <button ng-click="addItem()">Add</button><br />
+        <br />
+
+        <button type="button" ng-click="computeInvestment()" class="btn btn-primary">Compute</button><br />
+        <br />
+
+        <div ng-if="rowCollection.length > 0">
+            <div show-results results="rowCollection"></div>
+        </div>
+
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.6.2/angular-resource.js"></script>
+<script src="app/app.InvestmentManager.js"></script>
+
+</body>
+</html>
