@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @SuppressWarnings("unused")
 public class InvestmentController {
 
-    int count = 0;
-
     @Autowired
     private InvestmentService investmentService;
 
