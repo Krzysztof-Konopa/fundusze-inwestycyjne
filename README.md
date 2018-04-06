@@ -3,6 +3,9 @@
 ### ABOUT ###
 Application for calculating investment base on computing.
 
+This Project has been migrated from java8 to java10, you can java10 version project here:
+https://github.com/Krzysztof-Konopa/fundusze-inwestycyjne-java10
+
 ### REQUIREMENTS ###
 
 Java 8 installed (or higher)
